@@ -1,0 +1,25 @@
+name: Generate ASCII Artwork
+
+
+on: push
+
+jobs:
+    ascii_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v5
+
+        - name: Install Cowsay Program
+          run: |
+             sudo apt-get install -y cowsay
+             cowsay -f draon "Run for cover,I am a Dragon..... RAWR" >> dragon.txt
+             grep -i "dragon" dragon.txt
+             cat dragon.txt
+             ls
+
+        # - name: list files
+        #   run: ls
+          
+        # - name: Read file
+        #   run: cat README.md
